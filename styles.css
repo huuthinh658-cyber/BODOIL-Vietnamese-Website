@@ -351,6 +351,13 @@ h3 {
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 8px 22px rgba(20, 24, 21, 0.06);
+  cursor: zoom-in;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(20, 24, 21, 0.12);
 }
 
 .gallery-item img {
@@ -368,6 +375,85 @@ h3 {
   font-size: 12px;
   line-height: 1.25;
   overflow-wrap: anywhere;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: rgba(10, 12, 11, 0.9);
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox-frame {
+  display: grid;
+  gap: 12px;
+  width: min(1040px, 88vw);
+  margin: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.lightbox-frame img {
+  display: block;
+  width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.lightbox-frame figcaption {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+}
+
+.lightbox button {
+  border: 0;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  width: 46px;
+  height: 64px;
+  border-radius: 8px;
+  font-size: 48px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.lightbox-prev {
+  left: 18px;
+}
+
+.lightbox-next {
+  right: 18px;
+}
+
+body.lightbox-open {
+  overflow: hidden;
 }
 
 .market-layout {
@@ -491,5 +577,19 @@ textarea {
 
   .footer-links {
     text-align: left;
+  }
+
+  .lightbox {
+    padding: 60px 12px 20px;
+  }
+
+  .lightbox-frame {
+    width: 100%;
+  }
+
+  .lightbox-nav {
+    top: auto;
+    bottom: 12px;
+    transform: none;
   }
 }
